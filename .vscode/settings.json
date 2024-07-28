@@ -1,0 +1,9 @@
+{
+  "files.autoSave": "afterDelay",
+  "files.autoSaveWhenNoErrors": true,
+  "diffEditor.codeLens": true,
+  "terminal.integrated.fontSize": 12,
+  "editor.definitionLinkOpensInPeek": true,
+  "editor.formatOnSave": true,
+  "editor.gotoLocation.alternativeTypeDefinitionCommand": "editor.action.goToTypeDefinition"
+}

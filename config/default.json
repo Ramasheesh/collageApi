@@ -1,0 +1,9 @@
+{
+    "port":4000,
+    "jwtOption":{
+        "jwtSecretKey":"122dasfdffffffffffffffffffffffffffffewwwwwwwwwwwwwwwf2"
+    },
+    "mongo":{
+        "url":"mongodb://127.0.0.1:27017/collage"
+    }
+}
