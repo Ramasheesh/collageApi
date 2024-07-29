@@ -101,11 +101,23 @@ async function setPassword(req,res) {
     
   }
 }
-async function getProfile(req,res) {
+async function getUser(req,res) {
   try {
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.limit.page) || 10;
+    const skip = (page-1)*limit;
+
+    const user = await Model.find().skip(skip).limit(limit);
+    console.log('user: ', user);
     
+    const totalUser = await user.countDocument();
+    const totalPage = math.ceil(totalUser/limit);
+
+     res.json({page , limit , skip, totalUser, totalPage, user});
+
   } catch (error) {
-    
+    console.log('error: ', error); 
+    res.status(500).json({ error: "Internal Server Error" });
   }
 }
 async function updateProfile(req,res) {
@@ -149,7 +161,7 @@ module.exports = {
   forgetPassword,
   forResetPassword,
   setPassword,
-  getProfile,
+  getUser,
   updateProfile,
   deleteUser
 };
