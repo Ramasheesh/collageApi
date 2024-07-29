@@ -84,14 +84,15 @@ async function forgetPassword(req,res) {
   try {
     
   } catch (error) {
-    
+    console.log('error: ', error);
+    res.status(500).json({ error: "Internal Server Error" });
   }
 }
 async function forResetPassword(req,res) {
   try {
-    
+    return null
   } catch (error) {
-    
+    console.log('error: ', error);
   }
 }
 async function setPassword(req,res) {
