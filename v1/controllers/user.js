@@ -104,16 +104,15 @@ async function setPassword(req,res) {
 async function getUser(req,res) {
   try {
     const page = parseInt(req.query.page) || 1;
-    const limit = parseInt(req.limit.page) || 10;
+    const limit = parseInt(req.query.limit) || 10;
     const skip = (page-1)*limit;
 
     const user = await Model.find().skip(skip).limit(limit);
-    console.log('user: ', user);
-    
-    const totalUser = await user.countDocument();
-    const totalPage = math.ceil(totalUser/limit);
+    // console.log('user: ', user);
+    const totalUser = await Model.countDocuments();
+    const totalPage = Math.ceil(totalUser/limit);
 
-     res.json({page , limit , skip, totalUser, totalPage, user});
+    return res.json({page , limit , skip,totalUser,totalPage, user});
 
   } catch (error) {
     console.log('error: ', error); 

@@ -38,6 +38,12 @@ const userSchema = new mongoose.Schema({
     type: String,
     // required: true,
   },
+  classes: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "class", // Assuming you have a Course model
+    },
+  ],
   enrolledDate: {
     type: Date,
     default: Date.now,
