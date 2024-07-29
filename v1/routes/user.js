@@ -9,6 +9,7 @@ router.post("/signUp", userController.signUp);
 // router.post("/verifyOtp", userController.verifyOtp);
 router.post("/login", userController.login);
 router.post("/forgetPassword", userController.forgetPassword);
+router.post("/setPassword", authService,userController.setPassword);
 router.post("/logout",  authService,userController.logout);
 router.post("/deleteUser",  authService,userController.deleteUser);
 router.put("/updateProfile",  authService,userController.updateProfile);

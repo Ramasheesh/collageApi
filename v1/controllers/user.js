@@ -96,9 +96,25 @@ async function forResetPassword(req,res) {
 }
 async function setPassword(req,res) {
   try {
-    
+    const id = req.user._id
+    let {password , confirmPassword} = req.body;
+    let userData = await Model.findById(id);
+    if(!userData){
+      throw res.status(401).json({error:"User Athentication faild"});
+    }
+    if(password === confirmPassword){
+    password = await Utility.hashPasswaordUsingBcrypt(confirmPassword);
+    }
+    else{
+      res.status(400).json({msg: "Possword and Confirm Password are not Same"})
+    }
+    userData.password = password;
+    await userData.save();
+
+  return res.status(201).json({userData , msg: "Success"}); 
   } catch (error) {
-    
+    console.log('error: ', error);
+    res.status(500).json({ error: "Internal Server Error" });
   }
 }
 async function getUser(req,res) {
@@ -128,12 +144,12 @@ async function updateProfile(req,res) {
     const data= req.body;
     // console.log('data: ', data);
     if (data.class && (data.class < 1 || data.class > 12)) {
-      return res.status(400).json({ error: 'Invalid class provided' });
+      throw res.status(400).json({ error: 'Invalid class provided' });
     }
     const userData = await Model.findByIdAndUpdate({_id: id},{$set:data}, {new: true , runValidators: true});
     // console.log('userData: ', userData);
     if(!userData){
-      return res.status(404).json({ error: 'User not found' });
+      throw res.status(404).json({ error: 'User not found' });
     }
     return res.status(201).json({userData,message: "update successfully"});
   } catch (error) {
