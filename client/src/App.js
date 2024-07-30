@@ -1,7 +1,7 @@
 import { Route, Routes  } from "react-router-dom";
-import Main from "./component/Main";
-import SignIn from "./component/SignIn";
-import SignUp from "./component/SignUp";
+import Main from "./component/Main/index.jsx";
+import SignIn from "./component/SignIn/index.jsx";
+import SignUp from "./component/SignUp/index.jsx";
 
 function App() {
   return (

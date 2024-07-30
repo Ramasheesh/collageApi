@@ -74,7 +74,7 @@ const Signin = () => {
         <div className={style.left}>
           <h1>New here?</h1>
           <Link to="/signup">
-            <button type="button" className={style.white_btn}>
+            <button type="submit" className={style.white_btn}>
               Sign Up
             </button>
           </Link>

@@ -44,7 +44,7 @@ async function login(req, res, next) {
     res.status(200).json({ user, msg: "Login Successfully" });
     next();
   } catch (error) {
-    console.log("error: ", error);
+    // console.log("error: ", error);
     res.status(500).json({ error: "Internal Server Error" });
   }
 }

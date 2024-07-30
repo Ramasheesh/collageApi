@@ -3,7 +3,7 @@ const app = express();
 require("dotenv").config();
 const cors = require("cors");
 const path = require("path");
-const bodyParser = require('body-parser')
+const bodyParser = require('body-parser');
 const v1Routes = require("./v1/routes");
 const database = require("./connections/dbConnection");
 // const constant = require("./messages/message");
@@ -20,9 +20,10 @@ app.use(function (req,res,next) {
     }
     next()
 })
-*/
+*/ 
 
 // start
+app.use(cors());
 app.use(bodyParser.json());
 app.use(express.json()); // For parsing application/json
 // app.use(express.json({ extended: false }));

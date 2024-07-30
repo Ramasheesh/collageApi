@@ -3,13 +3,14 @@ import style from "./style.module.css";
 import { Link, useNavigate } from "react-router-dom";
 import Axios from "axios";
 
-const Signup = () => {
+const SignUp = () => {
   const [data, setData] = useState({
     name: "",
     fatherName: "",
     age: "",
     email: "",
-    number: "",
+    class: "",
+    // number: "",
     password: "",
   });
   const [error, setError] = useState("");
@@ -42,7 +43,7 @@ const Signup = () => {
       <div className={style.signup_from_Container}>
         <div className={style.left}>
           <h1>Welcome Back</h1>
-          <Link to ="/login">
+          <Link to="/login">
             <button type="button" className={style.white_btn}>
               Login
             </button>
@@ -78,6 +79,15 @@ const Signup = () => {
               required
               className={style.input}
             />
+             <input
+              type="text"
+              placeholder="Class"
+              name="class"
+              value={data.class}
+              onChange={handleChange}
+              required
+              className={style.input}
+            />
             <input
               type="text"
               placeholder="Email"
@@ -87,7 +97,7 @@ const Signup = () => {
               required
               className={style.input}
             />
-            <input
+            {/* <input
               type="text"
               placeholder="Number"
               name="number"
@@ -95,7 +105,7 @@ const Signup = () => {
               onChange={handleChange}
               required
               className={style.input}
-            />
+            /> */}
             <input
               type="text"
               placeholder="Password"
@@ -116,5 +126,6 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default SignUp;
+
 
